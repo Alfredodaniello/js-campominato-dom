@@ -56,8 +56,8 @@ for(let i = 1; i <=100; i++){
         setTimeout(function () {
         alert("Mi dispiace, Hai perso!")
         alert("Il tuo punteggio è " + (score-1))
-        mainGrid.innerHTML = "";
-        }, 0);
+        mainGrid.innerHTML ="";
+        }, 250);
         } else {
         createdSquare.classList.add("back-blue") 
         }
