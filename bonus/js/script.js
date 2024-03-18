@@ -41,7 +41,6 @@ CoicheDifficulty.addEventListener("click", function() {
                     listBomb.push(numberRandomCreated)
                 } else(i--)
             };
-            console.log(listBomb)
 
             //Utilizzo un ciclo e richiamo la mia funzione per crearmi 100 quadrati
             //Aggiungo le classi ai quadrati creati
@@ -71,7 +70,6 @@ CoicheDifficulty.addEventListener("click", function() {
                     listBomb.push(numberRandomCreated)
                 } else(i--)
             };
-            console.log(listBomb)
             for (let i = 1; i <= 81; i++) {
                 const createdSquare = square(i, listBomb);
                 createdSquare.classList.add("square", "square-bonusdiff2");
@@ -95,7 +93,6 @@ CoicheDifficulty.addEventListener("click", function() {
                     listBomb.push(numberRandomCreated)
                 } else(i--)
             };
-            console.log(listBomb)
             for (let i = 1; i <= 49; i++) {
                 const createdSquare = square(i, listBomb);
                 createdSquare.classList.add("square", "square-bonusdiff3");
@@ -136,6 +133,7 @@ function square(number, listBomb) {
     } else {
     createdSquare.classList.add("back-blue") 
     }
+    console.log("La cella cliccata è la numero " + number)
 })
 return createdSquare 
 }
