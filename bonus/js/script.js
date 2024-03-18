@@ -13,9 +13,7 @@ Aggiungere una select accanto al bottone di generazione, che fornisca una scelta
 
 
 
-
 alert("Clicca sul tasto play per giocare!");
-
 //Seleziono la select del mio DOM
 //La metto in ascolto di un "change" affinchè l'utente possa scegliere diverse soluzioni
 //Controllo il valore delle mie option
@@ -24,6 +22,7 @@ const CoicheDifficulty = document.querySelector(".form-select");
 CoicheDifficulty.addEventListener("click", function() {
     const difficulty = this.value;
     if (difficulty === "easy") {
+
         //Una volta che l'utente ha selezionato la difficolta metto il bottone play in attesta di un click 
         const btn = document.querySelector("#btn");
         btn.addEventListener("click", function() {
@@ -32,21 +31,28 @@ CoicheDifficulty.addEventListener("click", function() {
             //Tolgo la classe display:none e aggiungo display flex per farla apparire 
             const mainGrid = document.querySelector(".gridcontainer");
             mainGrid.innerHTML = "";
-            mainGrid.classList.remove("d-none");
             mainGrid.classList.add("d-flex");
-            //Creo un array vuoto dove inseriro i numeri generati random che non devono essere doppioni    
 
+            //Creo un array vuoto dove inseriro i numeri generati random che non devono essere doppioni
+            const listBomb = [];
+            for(let i = 1; i<=16; i++){
+                const numberRandomCreated = randomNumber(100, 1)
+                if (!listBomb.includes(numberRandomCreated)){
+                    listBomb.push(numberRandomCreated)
+                } else(i--)
+            };
+            console.log(listBomb)
 
             //Utilizzo un ciclo e richiamo la mia funzione per crearmi 100 quadrati
             //Aggiungo le classi ai quadrati creati
             //Appendo alla mia griglia i quadrati creati
-
             for (let i = 1; i <= 100; i++) {
-                const createdSquare = square(i);
+                const createdSquare = square(i, listBomb,);
                 createdSquare.classList.add("square", "square-base");
                 mainGrid.append(createdSquare)
             }
         });
+
 
         /* Se l'utente sceglie la difficolTà media cambiero solamente la classe"square-base" con "square-bonusdiff2" 
         che modifica la dimensione dei miei quadrati */
@@ -58,8 +64,16 @@ CoicheDifficulty.addEventListener("click", function() {
             mainGrid.innerHTML = "";
             mainGrid.classList.remove("d-none");
             mainGrid.classList.add("d-flex");
+            const listBomb = [];
+            for(let i = 1; i<=16; i++){
+                const numberRandomCreated = randomNumber(81, 1)
+                if (!listBomb.includes(numberRandomCreated)){
+                    listBomb.push(numberRandomCreated)
+                } else(i--)
+            };
+            console.log(listBomb)
             for (let i = 1; i <= 81; i++) {
-                const createdSquare = square(i);
+                const createdSquare = square(i, listBomb);
                 createdSquare.classList.add("square", "square-bonusdiff2");
                 mainGrid.append(createdSquare)
             }
@@ -74,23 +88,26 @@ CoicheDifficulty.addEventListener("click", function() {
             mainGrid.innerHTML = "";
             mainGrid.classList.remove("d-none");
             mainGrid.classList.add("d-flex");
+            const listBomb = [];
+            for(let i = 1; i<=16; i++){
+                const numberRandomCreated = randomNumber(49, 1)
+                if (!listBomb.includes(numberRandomCreated)){
+                    listBomb.push(numberRandomCreated)
+                } else(i--)
+            };
+            console.log(listBomb)
             for (let i = 1; i <= 49; i++) {
-                const createdSquare = square(i);
+                const createdSquare = square(i, listBomb);
                 createdSquare.classList.add("square", "square-bonusdiff3");
                 mainGrid.append(createdSquare)
             }
         });
     }
 });
+    
+
 //Utilizzo un ciclo per crearmi 100 quadrati ed aggiungergli le rispettive classi
-const listBomb = [];
-for(let i = 1; i<=16; i++){
-    const numberRandomCreated = randomNumber(100, 1)
-    if (!listBomb.includes(numberRandomCreated)){
-        listBomb.push(numberRandomCreated)
-    } else(i--)
-};
-console.log(listBomb)
+
 
 /*********************
     FUNCTIONS
@@ -100,7 +117,7 @@ console.log(listBomb)
 //number è il numero del quadrato
 //return: ritorna un quadrato che appendo nel DOM
 let score= 0;
-function square(number) {
+function square(number, listBomb) {
     const createdSquare = document.createElement("div");
     createdSquare.innerHTML = `<span>${number}</span>`;
 
@@ -110,13 +127,15 @@ function square(number) {
     if ( listBomb.includes(number)) {
     createdSquare.classList.add("back-red")
     setTimeout(function () {
-    alert("Mi dispiace, Hai perso!")
-    alert("Il tuo punteggio è " + (score-1))
+        alert("Mi dispiace, hai perso!");
+        alert("Il tuo punteggio è " + (score-1));
+        let mainGrid = document.querySelector(".gridcontainer");
+        mainGrid.innerHTML = "";
+        score = 0; 
     }, 250);
     } else {
     createdSquare.classList.add("back-blue") 
     }
-    console.log(number)
 })
 return createdSquare 
 }
