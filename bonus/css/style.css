@@ -1,0 +1,79 @@
+/*******************************
+            HEADER
+*******************************/
+body {
+    background-color:#FFD700;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    background-color: #ffffff;
+    height: 80px;
+}
+
+.logo {
+    padding-left: 10px;
+    width: 75px;
+}
+
+.logo img {
+    width: 100%;
+}
+
+h1 {
+    margin-left: 20px;
+    flex-grow: 1;
+}
+
+button {
+        margin-right: 10px;
+}
+
+
+/*******************************
+            MAIN
+*******************************/
+
+.gridcontainer {
+    margin: 25px auto;
+    width: 600px;
+    height: 600px;
+}
+
+.square {
+    cursor: pointer;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: #ffffff 1px solid;
+    background-color: rgb(255, 81, 0);
+}
+
+.square-base{
+    width: calc(100% / 10);
+    height: calc(100% / 10);
+}
+.square-bonusdiff2{
+    width: calc(100% / 9);
+    height: calc(100% / 9);
+}
+.square-bonusdiff3{
+    width: calc(100% / 7);
+    height: calc(100% / 7);
+}
+
+.back-blue {
+    background-color: blue;
+}
+.back-red {
+    background-color: red;
+}
+/*******************************
+            FOOTER
+*******************************/
+footer {
+    height: 40px;
+    background-color: #ffffff;
+}
