@@ -82,7 +82,7 @@ CoicheDifficulty.addEventListener("click", function() {
         });
     }
 });
-
+//Utilizzo un ciclo per crearmi 100 quadrati ed aggiungergli le rispettive classi
 const listBomb = [];
 for(let i = 1; i<=16; i++){
     const numberRandomCreated = randomNumber(100, 1)
